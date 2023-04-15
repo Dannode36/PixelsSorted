@@ -20,6 +20,7 @@ namespace PixelsSorted
                 return;
             }
 
+            //Handle invalid paths and just restart the program loop if invalid
             Bitmap org_bitmap;
             try
             {

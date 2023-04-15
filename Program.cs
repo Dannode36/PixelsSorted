@@ -1,7 +1,4 @@
-﻿using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
+﻿using System.Drawing;
 
 namespace PixelsSorted
 {
@@ -38,11 +35,7 @@ namespace PixelsSorted
                     string input = Console.ReadLine() + "";
                     settings = Parser.InputParser.ParseInput(input.Split(" "));
                 }
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-
                 sorter.Sort(settings);
-                //Handle invalid paths and just restart the loop if so
             }
         }
 

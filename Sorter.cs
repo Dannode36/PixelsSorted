@@ -6,7 +6,7 @@ namespace PixelsSorted
     {
         public virtual void Sort(Arguments args)
         {
-            Console.WriteLine("OS is not compatible");
+            Console.WriteLine("Your OS is not supported yet :(");
         }
     }
 }
