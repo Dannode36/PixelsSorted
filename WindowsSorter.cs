@@ -60,13 +60,13 @@ namespace PixelsSorted
                 colorArray[i] = slice;
             }
 
-            //Sort Vertically
+            //Sort slices
             for (int i = 0; i < colorArray.Length; i++)
             {
                 Program.QuickSort(colorArray[i], 0, colorArray[i].Length - 1);
             }
 
-            //Write sorted array back into the bitmap
+            //Write sorted array back into the original bitmap
             for (int i = 0; i < bitmap.Width; i++)
             {
                 for (int j = 0; j < bitmap.Height; j++)

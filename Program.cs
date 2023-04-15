@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using ExtensionMethods;
+using PixelsSorted.Parser;
+using System.Drawing;
 
 namespace PixelsSorted
 {
@@ -39,19 +41,19 @@ namespace PixelsSorted
             }
         }
 
-        public static void QuickSort(Color[] array, int leftIndex, int rightIndex)
+        public static void QuickSort(Color[] array, int leftIndex, int rightIndex, ref Arguments args)
         {
             var i = leftIndex;
             var j = rightIndex;
-            var pivot = array[leftIndex].GetHue();
+            var pivot = array[leftIndex].GetSortingValue(args.sortValue);
             while (i <= j)
             {
-                while (array[i].GetHue() < pivot)
+                while (array[i].GetSortingValue(args.sortValue) < pivot)
                 {
                     i++;
                 }
 
-                while (array[j].GetHue() > pivot)
+                while (array[j].GetSortingValue(args.sortValue) > pivot)
                 {
                     j--;
                 }
@@ -66,9 +68,9 @@ namespace PixelsSorted
             }
 
             if (leftIndex < j)
-                QuickSort(array, leftIndex, j);
+                QuickSort(array, leftIndex, j, ref args);
             if (i < rightIndex)
-                QuickSort(array, i, rightIndex);
+                QuickSort(array, i, rightIndex, ref args);
         }
     }
 }
