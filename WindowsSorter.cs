@@ -63,7 +63,7 @@ namespace PixelsSorted
             //Sort slices
             for (int i = 0; i < colorArray.Length; i++)
             {
-                Program.QuickSort(colorArray[i], 0, colorArray[i].Length - 1);
+                Program.QuickSort(colorArray[i], 0, colorArray[i].Length - 1, ref args);
             }
 
             //Write sorted array back into the original bitmap

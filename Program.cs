@@ -8,25 +8,8 @@ namespace PixelsSorted
     {
         static void Main(string[] args)
         {
-            var settings = Parser.InputParser.ParseInput(args);
-            Sorter sorter;
-
-            if (OperatingSystem.IsWindows())
-            {
-                sorter = new WindowsSorter();
-            }
-            else if (OperatingSystem.IsLinux())
-            {
-                sorter = new();
-            }
-            else if (OperatingSystem.IsMacOS())
-            {
-                sorter = new();
-            }
-            else
-            {
-                sorter = new();
-            }
+            var settings = InputParser.ParseInput(args);
+            Sorter sorter = Sorter.OSSpecificSorter();
 
             while (true)
             {
@@ -35,7 +18,7 @@ namespace PixelsSorted
                 {
                     Console.WriteLine("Input path and any other arguments:");
                     string input = Console.ReadLine() + "";
-                    settings = Parser.InputParser.ParseInput(input.Split(" "));
+                    settings = InputParser.ParseInput(input.Split(" "));
                 }
                 sorter.Sort(settings);
             }
@@ -45,15 +28,15 @@ namespace PixelsSorted
         {
             var i = leftIndex;
             var j = rightIndex;
-            var pivot = array[leftIndex].GetSortingValue(args.sortValue);
+            var pivot = array[leftIndex].GetSortValue(args.sortValue);
             while (i <= j)
             {
-                while (array[i].GetSortingValue(args.sortValue) < pivot)
+                while (array[i].GetSortValue(args.sortValue) < pivot)
                 {
                     i++;
                 }
 
-                while (array[j].GetSortingValue(args.sortValue) > pivot)
+                while (array[j].GetSortValue(args.sortValue) > pivot)
                 {
                     j--;
                 }

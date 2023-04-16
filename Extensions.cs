@@ -10,7 +10,7 @@ namespace ExtensionMethods
 {
     public static class Extensions
     {
-        public static float GetSortingValue(this Color color, SortValue sortValue)
+        public static float GetSortValue(this Color color, SortValue sortValue)
         {
             return sortValue switch
             {
