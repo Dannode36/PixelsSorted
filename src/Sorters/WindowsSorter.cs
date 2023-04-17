@@ -15,10 +15,10 @@ namespace PixelsSorted.Sorters
             }
 
             //Handle invalid paths and just restart the program loop if invalid
-            Bitmap org_bitmap;
+            Bitmap bitmap;
             try
             {
-                org_bitmap = new(args.path);
+                bitmap = new(args.path);
             }
             catch (Exception ex)
             {
@@ -27,12 +27,6 @@ namespace PixelsSorted.Sorters
             }
 
             string filename = Path.GetFileNameWithoutExtension(args.path);
-
-            //Make a copy of the bitmap then disposes the original in order to avoid the "generic error"
-            //This happens when you save to a file that is already open
-            Bitmap bitmap = new(org_bitmap);
-            org_bitmap.Dispose();
-            bitmap.Save("Original.png", ImageFormat.Png);
 
             Console.WriteLine("Sorting...");
 
@@ -57,7 +51,11 @@ namespace PixelsSorted.Sorters
             //Sort slices
             for (int i = 0; i < colorArray.Length; i++)
             {
-                Main.QuickSort(colorArray[i], 0, colorArray[i].Length - 1, ref args);
+                Algorithm.QuickSort(colorArray[i], 0, colorArray[i].Length - 1, ref args);
+                if(args.sortMode == SortMode.LargestToSmallest)
+                {
+                    Array.Reverse(colorArray[i]);
+                }
             }
 
             //Write sorted array back into the original bitmap
@@ -76,7 +74,7 @@ namespace PixelsSorted.Sorters
 
             //Save as png
             bitmap.Save(filename + " (sorted).png", ImageFormat.Png);
-            Console.WriteLine("Sorted \n");
+            Console.WriteLine("Sorted!");
         }
     }
 }
