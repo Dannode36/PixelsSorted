@@ -1,0 +1,31 @@
+﻿namespace PixelsSorted.Parsing
+{
+    public class Arguments
+    {
+        public bool invalid;
+        public string path;
+        public SortDirection sortDirection;
+        public SortMode sortMode;
+        public SortValue sortValue;
+        public Arguments(string path)
+        {
+            this.path = path;
+        }
+    }
+    public enum SortDirection
+    {
+        Vertical,
+        Horizontal
+    }
+    public enum SortMode
+    {
+        SmallestToLargest,
+        LargestToSmallest
+    }
+    public enum SortValue
+    {
+        Hue,
+        Saturation,
+        Brightness
+    }
+}

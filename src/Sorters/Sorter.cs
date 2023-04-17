@@ -1,5 +1,4 @@
-﻿using PixelsSorted.Parser;
-using System.Globalization;
+﻿using PixelsSorted.Parsing;
 
 namespace PixelsSorted.Sorters
 {

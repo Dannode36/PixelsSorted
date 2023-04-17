@@ -1,55 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PixelsSorted.Parser
+﻿namespace PixelsSorted.Parsing
 {
-    public enum SortDirection
-    {
-        Vertical,
-        Horizontal
-    }
-    public enum SortMode
-    {
-        SmallestToLargest,
-        LargestToSmallest
-    }
-    public enum SortValue
-    {
-        Hue,
-        Saturation,
-        Brightness
-    }
-    public class Arguments
-    {
-        public bool invalid;
-        public string path;
-        public SortDirection sortDirection;
-        public SortMode sortMode;
-        public SortValue sortValue;
-
-        public Arguments(string path)
-        {
-            this.path = path;
-        }
-    }
-
     public static class InputParser
     {
         public static Arguments ParseInput(string[] args)
         {
             Arguments arguments = new("null");
 
+            if(args.Length == 0)
+            {
+                arguments.invalid = true;
+                return arguments;
+            }
+
             try
             {
                 foreach (var arg in args)
                 {
-                    if(arg == args[0]) 
+                    if (arg == args[0])
                     {
                         arguments.path = arg;
-                        continue; 
+                        continue;
                     }
 
                     switch (arg)

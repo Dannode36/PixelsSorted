@@ -1,6 +1,6 @@
 ﻿using System.Drawing.Imaging;
 using System.Drawing;
-using PixelsSorted.Parser;
+using PixelsSorted.Parsing;
 
 namespace PixelsSorted.Sorters
 {
@@ -26,11 +26,7 @@ namespace PixelsSorted.Sorters
                 return;
             }
 
-            string filename = Path.GetFileNameWithoutExtension(args.path);
-
-            Console.WriteLine("Sorting...");
-
-            if (args.sortDirection == Parser.SortDirection.Horizontal)
+            if (args.sortDirection == SortDirection.Horizontal)
             {
                 bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
             }
@@ -67,13 +63,13 @@ namespace PixelsSorted.Sorters
                 }
             }
 
-            if (args.sortDirection == Parser.SortDirection.Horizontal)
+            if (args.sortDirection == SortDirection.Horizontal)
             {
                 bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }
 
             //Save as png
-            bitmap.Save(filename + " (sorted).png", ImageFormat.Png);
+            bitmap.Save(Path.GetFileNameWithoutExtension(args.path) + " (sorted).png", ImageFormat.Png);
             Console.WriteLine("Sorted!");
         }
     }

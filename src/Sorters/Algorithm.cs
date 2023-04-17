@@ -1,11 +1,6 @@
 ﻿using ExtensionMethods;
-using PixelsSorted.Parser;
-using System;
-using System.Collections.Generic;
+using PixelsSorted.Parsing;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PixelsSorted.Sorters
 {
