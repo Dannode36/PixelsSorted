@@ -1,5 +1,6 @@
 ﻿using ExtensionMethods;
 using PixelsSorted.Parser;
+using PixelsSorted.Sorters;
 using System.Drawing;
 
 namespace PixelsSorted

@@ -1,7 +1,7 @@
 ﻿using PixelsSorted.Parser;
 using System.Globalization;
 
-namespace PixelsSorted
+namespace PixelsSorted.Sorters
 {
     public class Sorter
     {

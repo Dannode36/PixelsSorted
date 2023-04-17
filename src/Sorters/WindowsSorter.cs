@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing.Imaging;
+﻿using System.Drawing.Imaging;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PixelsSorted.Parser;
 
-namespace PixelsSorted
+namespace PixelsSorted.Sorters
 {
     public class WindowsSorter : Sorter
     {
@@ -16,7 +10,7 @@ namespace PixelsSorted
         {
             if (!OperatingSystem.IsWindows())
             {
-                Console.WriteLine("Internal Error: Incorrect OS chosen");
+                Console.WriteLine("Internal Error: Sorter does not support chosen OS");
                 return;
             }
 
@@ -63,7 +57,7 @@ namespace PixelsSorted
             //Sort slices
             for (int i = 0; i < colorArray.Length; i++)
             {
-                Program.QuickSort(colorArray[i], 0, colorArray[i].Length - 1, ref args);
+                Main.QuickSort(colorArray[i], 0, colorArray[i].Length - 1, ref args);
             }
 
             //Write sorted array back into the original bitmap
