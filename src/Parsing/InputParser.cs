@@ -4,25 +4,27 @@
     {
         public static Arguments ParseInput(string[] args)
         {
-            Arguments arguments = new("null");
+            Arguments arguments;
 
             if(args.Length == 0)
             {
-                arguments.invalid = true;
+                arguments = new("")
+                {
+                    invalid = true
+                };
                 return arguments;
+            }
+            else
+            {
+                arguments = new(args[0]);
             }
 
             try
             {
-                foreach (var arg in args)
+                //Start at 1 because path argument is handled above
+                for (int i = 1; i < args.Length; i++)
                 {
-                    if (arg == args[0])
-                    {
-                        arguments.path = arg;
-                        continue;
-                    }
-
-                    switch (arg)
+                    switch (args[i])
                     {
                         case "-hue":
                             arguments.sortValue = SortValue.Hue;
@@ -46,7 +48,7 @@
                             arguments.sortDirection = SortDirection.Horizontal;
                             break;
                         default:
-                            throw new ArgumentException($"Unrecognised argument: \"{arg}\"");
+                            throw new ArgumentException($"Unrecognised argument: \"{args[i]}\"");
                     }
                 }
             }
