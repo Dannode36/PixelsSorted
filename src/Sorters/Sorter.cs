@@ -9,7 +9,7 @@ namespace PixelsSorted.Sorters
             Console.WriteLine("Your OS is not supported yet :(");
         }
 
-        public static Sorter OSSpecificSorter()
+        public static Sorter NewOSCompatibleSorter()
         {
             if (OperatingSystem.IsWindows())
             {

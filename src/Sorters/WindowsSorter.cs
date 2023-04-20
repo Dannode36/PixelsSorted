@@ -68,7 +68,6 @@ namespace PixelsSorted.Sorters
                 bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }
 
-            //Save as png
             bitmap.Save(Path.GetFileNameWithoutExtension(args.path) + " (sorted).png", ImageFormat.Png);
             Console.WriteLine("Sorted!");
         }

@@ -9,7 +9,7 @@ namespace PixelsSorted
         {
             //When args are present, program will only excecute once
             var settings = InputParser.ParseInput(args);
-            Sorter sorter = Sorter.OSSpecificSorter();
+            Sorter sorter = Sorter.NewOSCompatibleSorter();
 
             if (!settings.invalid)
             {
