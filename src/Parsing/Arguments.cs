@@ -5,7 +5,7 @@
         public bool invalid;
         public string path;
         public SortDirection sortDirection;
-        public SortMode sortMode;
+        public SortOrder sortMode;
         public SortValue sortValue;
         public Arguments(string path)
         {
@@ -17,7 +17,7 @@
         Vertical,
         Horizontal
     }
-    public enum SortMode
+    public enum SortOrder
     {
         SmallestToLargest,
         LargestToSmallest

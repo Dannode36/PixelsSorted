@@ -24,7 +24,7 @@
                 //Start at 1 because path argument is handled above
                 for (int i = 1; i < args.Length; i++)
                 {
-                    switch (args[i])
+                    switch (args[i].ToLower())
                     {
                         case "-hue":
                             arguments.sortValue = SortValue.Hue;
@@ -36,10 +36,10 @@
                             arguments.sortValue = SortValue.Brightness;
                             break;
                         case "-stl":
-                            arguments.sortMode = SortMode.SmallestToLargest;
+                            arguments.sortMode = SortOrder.SmallestToLargest;
                             break;
                         case "-lts":
-                            arguments.sortMode = SortMode.LargestToSmallest;
+                            arguments.sortMode = SortOrder.LargestToSmallest;
                             break;
                         case "-v":
                             arguments.sortDirection = SortDirection.Vertical;

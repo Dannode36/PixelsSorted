@@ -8,6 +8,7 @@ namespace PixelsSorted.Sorters
     {
         public override void Sort(Arguments args)
         {
+            //Mostly to remove some stupid warnings
             if (!OperatingSystem.IsWindows())
             {
                 Console.WriteLine("Internal Error: Sorter does not support chosen OS");
@@ -26,6 +27,10 @@ namespace PixelsSorted.Sorters
                 return;
             }
 
+            //Yay sorting time!
+            Console.WriteLine("Sorting...");
+
+            //Rotating image = easy hack for sorting horizontally
             if (args.sortDirection == SortDirection.Horizontal)
             {
                 bitmap.RotateFlip(RotateFlipType.Rotate90FlipNone);
@@ -33,7 +38,7 @@ namespace PixelsSorted.Sorters
 
             Color[][] colorArray = new Color[bitmap.Width][];
 
-            //Convert bitmap to jagged array
+            //Convert bitmap into a jagged array of "colour slices"
             for (int i = 0; i < bitmap.Width; i++)
             {
                 Color[] slice = new Color[bitmap.Height];
@@ -44,17 +49,17 @@ namespace PixelsSorted.Sorters
                 colorArray[i] = slice;
             }
 
-            //Sort slices
+            //Sort the slices
             for (int i = 0; i < colorArray.Length; i++)
             {
                 Algorithm.QuickSort(colorArray[i], 0, colorArray[i].Length - 1, ref args);
-                if(args.sortMode == SortMode.LargestToSmallest)
+                if(args.sortMode == SortOrder.LargestToSmallest)
                 {
                     Array.Reverse(colorArray[i]);
                 }
             }
 
-            //Write sorted array back into the original bitmap
+            //Write sorted array back into the bitmap
             for (int i = 0; i < bitmap.Width; i++)
             {
                 for (int j = 0; j < bitmap.Height; j++)
@@ -63,11 +68,13 @@ namespace PixelsSorted.Sorters
                 }
             }
 
+            //Rotate image back if it was rotated before
             if (args.sortDirection == SortDirection.Horizontal)
             {
                 bitmap.RotateFlip(RotateFlipType.Rotate270FlipNone);
             }
 
+            //Save to the root directory (should let user choose where it saves)
             bitmap.Save(Path.GetFileNameWithoutExtension(args.path) + " (sorted).png", ImageFormat.Png);
             Console.WriteLine("Sorted!");
         }
