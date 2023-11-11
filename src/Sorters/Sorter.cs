@@ -9,7 +9,7 @@ namespace PixelsSorted.Sorters
             Console.WriteLine("Your OS is not supported yet :(");
         }
 
-        public static Sorter NewOSCompatibleSorter()
+        public static Sorter CreateOSSpecificSorter()
         {
             if (OperatingSystem.IsWindows())
             {
@@ -25,7 +25,7 @@ namespace PixelsSorted.Sorters
             }
             else
             {
-                return new();
+                throw new NotSupportedException("Your system is not supported");
             }
         }
     }
